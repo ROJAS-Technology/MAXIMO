@@ -133,10 +133,63 @@ body {
     height: 100%;
 }
 
+/* ============================== */
+
+
+/* Video del avatar — escritorio */
+.video-avatar {
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
+}
+
+/* Video del avatar — celulares */
+@media (max-width: 600px) {
+    .video-avatar {
+        max-width: 90%;   /* 100% */
+        max-height: 55%;   /* 65% */
+    }
+}
+
+/* =========================== */
+
+
+/* ── CAMBIO PUNTUAL: @MEDIA EXCLUSIVA PARA EL TITULO EN CELULARES ── */
+@media (max-width: 600px) {
+    .character-title {
+        width: 290px !important;    /* Achica el cartel al ancho del celular */
+        font-size: 13px !important; /* Reduce la letra para que no se corte */
+        padding: 8px 0 !important;  /* Ajusta la altura proporcionalmente */
+    }
+}
+
+
+/* ── CAMBIO PUNTUAL: @MEDIA EXCLUSIVA PARA EL BOTÓN EN CELULARES ── */
+@media (max-width: 600px) {
+    #btn-video {
+        width: 140px !important;    /* Reduce el ancho en el teléfono */
+        padding: 8px 0 !important;  /* Reduce la altura para que no sea tan tosco */
+        font-size: 12px !important; /* Achica la letra y el emoji en celulares */
+        margin-top: 10px !important;/* Ajusta el espacio respecto al círculo */
+    }
+}
+
+
+@media (max-width: 600px) {
+    /* MUESTRA POR OBLIGACIÓN LA BARRA DE AVANCE EN CELULARES */
+    .video-avatar::-webkit-media-controls-panel {
+        display: flex !important;
+        opacity: 1 !important;
+    }
+}
+
 
 
 </style>
+
 </head>
+
+
 <body>
 
 <header class="main-header">
@@ -188,6 +241,54 @@ body {
 
         <div class="workspace-placeholder" style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;">
 
+
+
+
+            <!-- 1. CARTEL SUPERIOR VERDE -->
+            <!--<div style="background:#2E5A1C; color:#fff; padding:6px 35px; font-size:15px; font-weight:bold; letter-spacing:1px; margin-bottom:15px; text-transform:uppercase;">-->
+
+            <!--<div style="background:#0A5C2C; color:#fff; width:520px; text-align:center; padding:12px 0; font-size:18px; font-weight:bold; letter-spacing:2px; margin-bottom:20px; border-radius:6px; text-transform:uppercase;">-->
+
+            <div class="character-title" style="background:#0A5C2C; color:#fff; width:520px; text-align:center; padding:12px 0; font-size:18px; font-weight:bold; letter-spacing:2px; margin-bottom:20px; border-radius:6px; text-transform:uppercase;">
+
+                MAXIMO DECIMO MERIDIO
+
+            </div>
+
+
+
+        <!--
+        <div id="overlay-permisos" style="
+            position:fixed; top:80px; left:20px; z-index:9999;
+            background:#fff; border-radius:12px; padding:20px;
+            width:280px; box-shadow:0 4px 20px rgba(0,0,0,0.25);
+            font-family:'Segoe UI', Tahoma, sans-serif;">
+
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+                <strong style="font-size:15px; color:#202124;">Este sitio quiere</strong>
+                <span onclick="document.getElementById('overlay-permisos').remove()" style="cursor:pointer; color:#5f6368; font-size:18px;">×</span>
+            </div>
+
+            <div style="font-size:13px; color:#1a73e8; margin-bottom:16px;">
+                🎤 Usar tu cámara y micrófono
+            </div>
+
+            <button onclick="permitirAcceso()" style="
+                width:100%; background:#e8eaf6; color:#1a237e; border:none;
+                padding:10px; border-radius:20px; font-size:13px; font-weight:600;
+                cursor:pointer; margin-bottom:8px;">
+                Permitir
+            </button>
+
+            <button onclick="document.getElementById('overlay-permisos').remove()" style="
+                width:100%; background:#e8eaf6; color:#1a237e; border:none;
+                padding:10px; border-radius:20px; font-size:13px; font-weight:600;
+                cursor:pointer;">
+                No permitir
+            </button>
+        </div>
+        -->
+
             <!--
             <video
                 id="video-portal"
@@ -198,34 +299,64 @@ body {
             -->
 
 
+
+               <!-- CAMBIO 3: VIDEO CIRCULAR CON SU BARRA DE AVANCE NATIVA (CONTROLS) -->
+
+
             <video
                 id="video-portal"
+                class="video-avatar"
                 src="Maximo_Decimo_Meridio.mp4"
-                autoplay loop playsinline
+                /* autoplay loop playsinline */
+                /*loop playsinline muted*/
+                    loop playsinline muted controls  
+                
                 style="
-                    <!--width: 700px;-->
-                    <!--height: 500px;-->
-                    <!--object-fit: cover;-->
-                    <!--object-position: center top;-->
-                    <!--border-radius: 12px;-->
-                    <!--object-position: 50% 20%;-->
-                    <!--border-radius: 0;-->
+                    /* width: 700px; */
+                    /* height: 500px; */
+                    /* object-fit: cover;*/
+                    /* object-position: center top; */
+                    /*border-radius: 12px; */
+                    /* object-position: 50% 20%; */
+                    /* border-radius: 0; */
 
 
-                    max-width: 100%;
-                    max-height: 100%;
-                    object-fit: contain;
+                    /*max-width: 80%;*/
+                    /*max-height: 80%;*/
+                    /*object-fit: contain;*/
+
+                        width: 520px;
+                        height: 520px;
+                        object-fit: cover;
+                        border-radius: 50%;
+                        border: 2px solid #444444;
+                        /*box-shadow: 0 4px 12px rgba(0,0,0,0.2);*/
+                        margin-bottom: 15px;
+
 
                 ">
+                
             </video>
 
 
 
-
+            <!--
             <button onclick="activarSonido()" id="btn-sonido"
                 style="background:#556B2F;color:white;border:none;padding:8px 20px;border-radius:6px;cursor:pointer;font-size:13px;">
                 🔊 Activar sonido
             </button>
+            -->
+
+
+            <button onclick="toggleVideo()" id="btn-video"
+                data-old-style="background:#0A5C2C;color:white;border:none;padding:8px 20px;border-radius:6px;cursor:pointer;font-size:13px;"
+
+                style="background:#0A5C2C; color:white; border:none; width:180px; padding:12px 0; border-radius:6px; cursor:pointer; font-size:15px; font-weight:bold; margin-top:15px;">
+
+                ⏸ Video Stop
+            </button>
+
+
         </div>
     </main>
 
@@ -234,7 +365,12 @@ body {
 
 </div>
 
+
+
+
+
 <script>
+
 function proximamente(btn) {
     document.getElementById("workspace").innerHTML = `
         <div class="workspace-placeholder">
@@ -247,12 +383,86 @@ function proximamente(btn) {
     `;
 }
 
+
 function activarSonido() {
     const v = document.getElementById("video-portal");
     v.muted = false;
     v.play();
     document.getElementById("btn-sonido").style.display = "none";
 }
+
+
+function toggleVideo() {
+    const v = document.getElementById("video-portal");
+    const btn = document.getElementById("btn-video");
+    if (v.paused) {
+        v.play();
+        btn.textContent = "⏸ Video Stop";
+        btn.style.background = "#0A5C2C"; // verde = reproduciendo
+    } else {
+        v.pause();
+        btn.textContent = "▶ Video Start";
+        btn.style.background = "#B22222"; // rojo = pausado
+    }
+}
+
+
+/*
+async function permitirAcceso() {
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+        // Apaga la cámara y el micrófono de inmediato — el permiso ya quedó guardado
+        stream.getTracks().forEach(track => track.stop());
+    } catch (e) {
+        console.log("Permisos no otorgados:", e);
+    }
+
+    const v = document.getElementById("video-portal");
+    v.muted = false;
+    v.play();
+
+    document.getElementById("overlay-permisos").remove();
+}
+*/
+
+/*
+// ESTO REEMPLAZÓ A "permitirAcceso()"
+window.addEventListener('DOMContentLoaded', async () => {
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+        const v = document.getElementById("video-portal");
+        v.muted = false;
+        v.play();
+    } catch (e) {
+        console.log("Permiso denegado:", e);
+    }
+});
+*/
+
+
+// SOLUCIÓN: PIDE EL PERMISO Y APAGA LA CÁMARA AL INSTANTE
+window.addEventListener('DOMContentLoaded', async () => {
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+        
+        // Guarda el flujo general en una variable global para tus otros botones
+        window.localStream = stream; 
+        
+        // APAGA LA CÁMARA DE INMEDIATO (La luz de la webcam se apaga aquí)
+        stream.getVideoTracks().forEach(track => track.stop());
+        //stream.getVideoTracks().forEach(track => { track.enabled = false; });
+
+        
+        // El video de Máximo arranca con sonido
+        const v = document.getElementById("video-portal");
+        v.muted = false;
+        v.play();
+    } catch (e) {
+        console.log("Permiso denegado por el usuario:", e);
+    }
+});
+
+
 
 
 </script>
