@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE EPICENTER</title>
+<style>
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+
+body {
+    background-color: #f0f0f0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* ── Cabecera ─────────────────────────────────── */
+.main-header {
+    background-color: #556B2F;
+    color: #ffffff;
+    text-align: center;
+    padding: 16px 0;
+    flex-shrink: 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.main-header h1 {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+/* ── Barra azul ───────────────────────────────── */
+.info-bar {
+    background-color: #0056b3;
+    color: #fff;
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    flex-shrink: 0;
+}
+
+/* ── Contenedor ───────────────────────────────── */
+.ide-container {
+    display: flex;
+    flex: 1;
+    padding: 14px;
+    gap: 14px;
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* ── Panel izquierdo ──────────────────────────── */
+.left-panel {
+    width: 200px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.panel-titulo {
+    font-size: 11px;
+    font-weight: 700;
+    color: #555;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #556B2F;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.ide-btn {
+    background-color: #0A5C2C;
+    color: white;
+    border: none;
+    padding: 12px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: left;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.2s, transform 0.1s;
+    text-decoration: none;
+}
+.ide-btn:hover { background-color: #07401E; transform: translateX(3px); }
+.ide-btn .icono { font-size: 18px; }
+
+/* ── Workspace ────────────────────────────────── */
+.workspace {
+    flex: 1;
+    background-color: #ffffff;
+    border: 1px solid #dcdcdc;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+}
+
+.workspace-placeholder {
+    text-align: center;
+    color: #a0a0a0;
+}
+.placeholder-icon { font-size: 52px; margin-bottom: 14px; }
+.workspace-placeholder p { font-size: 14px; font-style: italic; }
+
+/* ── Responsive celular ───────────────────────── */
+@media (max-width: 600px) {
+    .ide-container { flex-direction: column; padding: 8px; gap: 8px; }
+    .left-panel { width: 100%; }
+    .button-group { flex-direction: row; flex-wrap: wrap; }
+    .ide-btn { flex: 1 1 120px; font-size: 12px; padding: 10px 8px; justify-content: center; }
+    .ide-btn .icono { font-size: 15px; }
+    .panel-titulo { display: none; }
+    .main-header h1 { font-size: 17px; }
+    .info-bar { font-size: 11px; padding: 6px 10px; }
+}
+
+
+.workspace-placeholder {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+</style>
+</head>
+<body>
+
+<header class="main-header">
+    <h1>🤖 THE EPICENTER</h1>
+</header>
+
+<div class="info-bar">
+    Organización privada de investigación en Inteligencia Artificial — desarrollos en prueba
+</div>
+
+<div class="ide-container">
+
+    <aside class="left-panel">
+        <div class="panel-titulo">PROYECTOS DE PRUEBA</div>
+        <div class="button-group">
+
+            <!-- Al pulsar abre Máximo en la misma pestaña -->
+            <!-- <a class="ide-btn" href="/"> -->
+
+            <a class="ide-btn" href="/" target="_blank">
+
+                <span class="icono">🤖</span> 1 Máximo IA
+            </a>
+
+            <button class="ide-btn" onclick="proximamente(this)">
+                <span class="icono">👤</span> 2 AVATAR
+            </button>
+
+            <button class="ide-btn" onclick="proximamente(this)">
+                <span class="icono">🔬</span> 3 Proyecto
+            </button>
+
+        </div>
+    </aside>
+
+
+    <!--
+    <main class="workspace" id="workspace">
+        <div class="workspace-placeholder">
+            <div class="placeholder-icon">🚀</div>
+            <p>Selecciona un proyecto del panel izquierdo</p>
+        </div>
+    </main>
+    -->
+
+
+    <main class="workspace" id="workspace">
+        <!--<div class="workspace-placeholder" style="width:100%;height:100%;display:flex;flex-direction:column;align-  items:center;justify-content:center;gap:10px;"> -->
+
+        <div class="workspace-placeholder" style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;">
+
+            <!--
+            <video
+                id="video-portal"
+                src="Maximo_Decimo_Meridio.mp4"
+                autoplay loop playsinline
+                style="max-width:100%;max-height:85%;object-fit:contain;border-radius:6px;">
+            </video>
+            -->
+
+
+            <video
+                id="video-portal"
+                src="Maximo_Decimo_Meridio.mp4"
+                autoplay loop playsinline
+                style="
+                    <!--width: 700px;-->
+                    <!--height: 500px;-->
+                    <!--object-fit: cover;-->
+                    <!--object-position: center top;-->
+                    <!--border-radius: 12px;-->
+                    <!--object-position: 50% 20%;-->
+                    <!--border-radius: 0;-->
+
+
+                    max-width: 100%;
+                    max-height: 100%;
+                    object-fit: contain;
+
+                ">
+            </video>
+
+
+
+
+            <button onclick="activarSonido()" id="btn-sonido"
+                style="background:#556B2F;color:white;border:none;padding:8px 20px;border-radius:6px;cursor:pointer;font-size:13px;">
+                🔊 Activar sonido
+            </button>
+        </div>
+    </main>
+
+
+
+
+</div>
+
+<script>
+function proximamente(btn) {
+    document.getElementById("workspace").innerHTML = `
+        <div class="workspace-placeholder">
+            <div class="placeholder-icon">${btn.querySelector('.icono').textContent}</div>
+            <p><strong>${btn.textContent.trim()}</strong></p>
+            <p style="margin-top:8px;font-size:12px;color:#0056b3;font-style:normal;font-weight:600;">
+                Próximamente disponible
+            </p>
+        </div>
+    `;
+}
+
+function activarSonido() {
+    const v = document.getElementById("video-portal");
+    v.muted = false;
+    v.play();
+    document.getElementById("btn-sonido").style.display = "none";
+}
+
+
+</script>
+
+</body>
+</html>
